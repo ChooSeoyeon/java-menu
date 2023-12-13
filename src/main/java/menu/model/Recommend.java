@@ -2,27 +2,27 @@ package menu.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import menu.model.enums.Menu;
+import menu.model.enums.Category;
 import menu.model.generator.CategoryNumberGenerator;
 
 public class Recommend {
     private final CategoryNumberGenerator categoryNumberGenerator;
-    private List<Menu> recommendedCategories;
+    private List<Category> recommendedCategories;
 
     public Recommend(CategoryNumberGenerator categoryNumberGenerator) {
         this.categoryNumberGenerator = categoryNumberGenerator;
         this.recommendedCategories = new ArrayList<>();
     }
 
-    public Menu recommendCategory() {
+    public Category recommendCategory() {
         int categoryId = categoryNumberGenerator.generate();
-        Menu recommendedCategory = Menu.findById(categoryId);
+        Category recommendedCategory = Category.findById(categoryId);
         validateRecommendedCategory(recommendedCategory);
         recommendedCategories.add(recommendedCategory);
         return recommendedCategory;
     }
 
-    private void validateRecommendedCategory(Menu recommendedCategory) {
+    private void validateRecommendedCategory(Category recommendedCategory) {
         long count = recommendedCategories.stream()
                 .filter(category -> category == recommendedCategory)
                 .count();
@@ -31,5 +31,4 @@ public class Recommend {
             throw new IllegalStateException("이미 2번 이상 추천된 카테고리입니다.");
         }
     }
-
 }

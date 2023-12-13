@@ -1,7 +1,7 @@
 package menu.model;
 
 import java.util.List;
-import menu.model.enums.Menu;
+import menu.model.enums.Category;
 
 public class Coach {
     private final String name;
@@ -34,7 +34,7 @@ public class Coach {
         } // TODO
 
         menusDontEat.stream()
-                .filter(menu -> !Menu.isExistMenuName(menu))
+                .filter(menu -> !Category.isExistMenuName(menu))
                 .findAny()
                 .ifPresent(menu -> {
                     throw new IllegalArgumentException("존재하지 않는 메뉴입니다.");

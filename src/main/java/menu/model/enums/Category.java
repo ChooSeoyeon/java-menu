@@ -2,7 +2,7 @@ package menu.model.enums;
 
 import java.util.List;
 
-public enum Menu {
+public enum Category {
     JAPANESE(1, "일식", List.of("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")),
     KOREAN(2, "한식", List.of("김밥", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음")),
     CHINESE(3, "중식", List.of("깐풍기", "볶음면", "동파육", "짜장면", "짬뽕", "마파두부", "탕수육", "토마토 달걀볶음", "고추잡채")),
@@ -13,16 +13,16 @@ public enum Menu {
     private final String category;
     private final List<String> menuNames;
 
-    Menu(int categoryId, String category, List<String> menuNames) {
+    Category(int categoryId, String category, List<String> menuNames) {
         this.categoryId = categoryId;
         this.category = category;
         this.menuNames = menuNames;
     }
 
-    public static Menu findById(int categoryId) {
-        for (Menu menu : Menu.values()) {
-            if (menu.categoryId == categoryId) {
-                return menu;
+    public static Category findById(int categoryId) {
+        for (Category category : Category.values()) {
+            if (category.categoryId == categoryId) {
+                return category;
             }
         }
         throw new IllegalStateException("존재하지 않는 카테고리입니다.");
@@ -37,8 +37,8 @@ public enum Menu {
     }
 
     public static boolean isExistMenuName(String menuName) {
-        for (Menu menu : Menu.values()) {
-            if (menu.getMenuNames().contains(menuName)) {
+        for (Category category : Category.values()) {
+            if (category.getMenuNames().contains(menuName)) {
                 return true;
             }
         }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import menu.model.Coaches;
 import menu.model.Recommend;
-import menu.model.enums.Menu;
+import menu.model.enums.Category;
 import menu.model.generator.CategoryRandomNumberGenerator;
 import menu.view.InputView;
 import menu.view.OutputView;
@@ -33,7 +33,7 @@ public class MenuRecommendController {
 
     private void start() {
         Recommend recommend = new Recommend(new CategoryRandomNumberGenerator());
-        Menu recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
+        Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
     }
 
     private void updateCoachMenuDontEat(String coachName) {
