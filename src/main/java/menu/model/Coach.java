@@ -1,6 +1,7 @@
 package menu.model;
 
 import java.util.List;
+import menu.model.dto.RecommendSummary;
 import menu.model.enums.Category;
 
 public class Coach {
@@ -77,5 +78,9 @@ public class Coach {
         if (recommendedMenus.contains(recommendedMenu)) {
             throw new IllegalStateException("이미 추천된 메뉴입니다.");
         }
+    }
+
+    public RecommendSummary captureRecommendSummary() {
+        return new RecommendSummary(name, recommendedMenus);
     }
 }
