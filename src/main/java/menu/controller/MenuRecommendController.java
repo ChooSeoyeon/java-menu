@@ -6,6 +6,7 @@ import menu.model.Coaches;
 import menu.model.Recommend;
 import menu.model.enums.Category;
 import menu.model.generator.CategoryRandomNumberGenerator;
+import menu.model.generator.MenuShuffleGenerator;
 import menu.view.InputView;
 import menu.view.OutputView;
 
@@ -32,7 +33,7 @@ public class MenuRecommendController {
     }
 
     private void start() {
-        Recommend recommend = new Recommend(new CategoryRandomNumberGenerator());
+        Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
         Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
     }
 
