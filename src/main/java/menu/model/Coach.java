@@ -1,5 +1,6 @@
 package menu.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import menu.model.dto.RecommendSummary;
 import menu.model.enums.Category;
@@ -12,6 +13,7 @@ public class Coach {
     public Coach(final String name) {
         this.name = name;
         validateName();
+        recommendedMenus = new ArrayList<>();
     }
 
     public void validateName() {

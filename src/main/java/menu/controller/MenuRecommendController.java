@@ -23,7 +23,6 @@ public class MenuRecommendController {
     public void run() {
         prepare();
         start();
-        //System.out.println("coaches.collectRecommendSummaries() = " + coaches.collectRecommendSummaries());
     }
 
     private void prepare() {
