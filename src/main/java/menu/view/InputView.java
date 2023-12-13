@@ -32,4 +32,19 @@ public class InputView {
             throw new IllegalArgumentException("코치 이름을 하나 이상 입력해야 합니다");
         }
     }
+
+    public List<String> readMenusBy(String coachName) {
+        System.out.println("\n" + coachName + "(이)가 못 먹는 메뉴를 입력해 주세요.");
+        String inputMenus = Console.readLine();
+        return convertInputMenusToStringList(inputMenus);
+    }
+
+    private List<String> convertInputMenusToStringList(String inputMenus) {
+        try {
+            return Arrays.stream(inputMenus.split(","))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("메뉴는 쉼표(,)로 구분해 입력햐여 합니다.");
+        }
+    }
 }

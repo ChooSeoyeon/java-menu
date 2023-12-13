@@ -16,6 +16,9 @@ public class MenuRecommendController {
 
     public void run() {
         List<String> coachNames = repeatUntilSuccessWithReturn(inputView::readCoachNames);
+        for (String coachName : coachNames) {
+            List<String> menus = repeatUntilSuccessWithReturn(() -> inputView.readMenusBy(coachName));
+        }
     }
 
     private <T> T repeatUntilSuccessWithReturn(Supplier<T> supplier) {
