@@ -24,4 +24,13 @@ public enum Menu {
     public List<String> getMenuNames() {
         return menuNames;
     }
+
+    public static boolean isExistMenuName(String menuName) {
+        for (Menu menu : Menu.values()) {
+            if (menu.getMenuNames().contains(menuName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

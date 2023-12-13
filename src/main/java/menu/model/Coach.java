@@ -1,6 +1,7 @@
 package menu.model;
 
 import java.util.List;
+import menu.model.enums.Menu;
 
 public class Coach {
     private final String name;
@@ -22,7 +23,21 @@ public class Coach {
         validateMenusDontEat();
     }
 
-    public void validateMenusDontEat() {
+    private void validateMenusDontEat() {
+        validateMenusDontEatExist();
+        validateMenusDontEatSize();
+    }
+
+    private void validateMenusDontEatExist() {
+        menusDontEat.stream()
+                .filter(menu -> !Menu.isExistMenuName(menu))
+                .findAny()
+                .ifPresent(menu -> {
+                    throw new IllegalArgumentException("존재하지 않는 메뉴입니다.");
+                });
+    }
+
+    private void validateMenusDontEatSize() {
         if (menusDontEat.size() > 3) {
             throw new IllegalArgumentException("못 먹는 메뉴는 0~2개 입력해야 합니다.");
         }

@@ -25,7 +25,7 @@ public class MenuRecommendController {
         while (true) {
             try {
                 return supplier.get();
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | IllegalStateException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
@@ -36,7 +36,7 @@ public class MenuRecommendController {
             try {
                 action.run();
                 return;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | IllegalStateException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
