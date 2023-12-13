@@ -2,7 +2,7 @@ package menu.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import menu.model.dto.RecommendSummary;
+import menu.model.dto.RecommendMenuSummary;
 import menu.model.enums.Category;
 
 public class Coaches {
@@ -43,7 +43,7 @@ public class Coaches {
         coaches.forEach(coach -> coach.recommendMenu(recommend, category));
     }
 
-    public List<RecommendSummary> collectRecommendSummaries() {
+    public List<RecommendMenuSummary> collectRecommendSummaries() {
         return coaches.stream()
                 .map(Coach::captureRecommendSummary)
                 .collect(Collectors.toList());

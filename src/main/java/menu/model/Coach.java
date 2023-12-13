@@ -2,7 +2,7 @@ package menu.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import menu.model.dto.RecommendSummary;
+import menu.model.dto.RecommendMenuSummary;
 import menu.model.enums.Category;
 
 public class Coach {
@@ -86,7 +86,7 @@ public class Coach {
         }
     }
 
-    public RecommendSummary captureRecommendSummary() {
-        return new RecommendSummary(name, recommendedMenus);
+    public RecommendMenuSummary captureRecommendSummary() {
+        return new RecommendMenuSummary(name, recommendedMenus);
     }
 }
