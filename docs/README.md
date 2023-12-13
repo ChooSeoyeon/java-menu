@@ -52,6 +52,8 @@
 
 ## Controller
 
+### MenuRecommendController
+
 - [ ] 에러를 관리한다
 - [ ] 실행한다
     - [ ] 준비한다
