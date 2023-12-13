@@ -35,7 +35,7 @@ public class Coach {
     private void validateMenusDontEatExist() {
         if (menusDontEat.size() == 1 && menusDontEat.get(0).isEmpty()) {
             return;
-        } // TODO
+        }
 
         menusDontEat.stream()
                 .filter(menu -> !Category.isExistMenuName(menu))

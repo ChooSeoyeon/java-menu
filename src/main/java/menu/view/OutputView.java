@@ -18,7 +18,7 @@ public class OutputView {
 
     public void printRecommendSummary(List<RecommendMenuSummary> recommendSummaries,
                                       List<RecommendCategorySummary> recommendCategorySummaries) {
-        System.out.println("메뉴 추천 결과입니다.");
+        System.out.println("\n메뉴 추천 결과입니다.");
         System.out.println("[ 구분 | " + formatDayList() + " ]");
         System.out.println("[ 카테고리 | " + formatCategoryList(recommendCategorySummaries) + " ]");
         for (RecommendMenuSummary recommendMenuSummary : recommendSummaries) {
