@@ -23,9 +23,11 @@ public class MenuRecommendController {
     public void run() {
         prepare();
         start();
+        end();
     }
 
     private void prepare() {
+        outputView.printRecommendStartAnnounce();
         coaches = repeatUntilSuccessWithReturn(this::prepareCoach);
         for (String coachName : coaches.getCoachNames()) {
             repeatUntilSuccess(() -> updateCoachMenuDontEat(coachName));
@@ -36,6 +38,10 @@ public class MenuRecommendController {
         Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
         Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
         repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
+    }
+
+    public void end() {
+        outputView.printRecommendSummary(coaches.collectRecommendSummaries());
     }
 
     private void updateCoachMenuDontEat(String coachName) {
