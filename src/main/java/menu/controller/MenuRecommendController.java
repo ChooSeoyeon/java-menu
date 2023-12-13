@@ -36,8 +36,10 @@ public class MenuRecommendController {
 
     private void start() {
         Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
-        Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
-        repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
+        for (int i = 0; i < 5; i++) {
+            Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
+            repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
+        }
     }
 
     public void end() {
