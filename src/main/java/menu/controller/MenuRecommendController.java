@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import menu.model.Coaches;
 import menu.model.Recommend;
 import menu.model.enums.Category;
+import menu.model.enums.Day;
 import menu.model.generator.CategoryRandomNumberGenerator;
 import menu.model.generator.MenuShuffleGenerator;
 import menu.view.InputView;
@@ -36,7 +37,7 @@ public class MenuRecommendController {
 
     private void start() {
         Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
-        for (int i = 0; i < 5; i++) {
+        for (Day day : Day.values()) {
             Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
             repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
         }
