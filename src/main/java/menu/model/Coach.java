@@ -18,7 +18,7 @@ public class Coach {
         }
     }
 
-    public void setMenusDontEat(final List<String> menusDontEat) {
+    public void updateMenusDontEat(final List<String> menusDontEat) {
         this.menusDontEat = menusDontEat;
         validateMenusDontEat();
     }
@@ -29,6 +29,10 @@ public class Coach {
     }
 
     private void validateMenusDontEatExist() {
+        if (menusDontEat.size() == 1 && menusDontEat.get(0).isEmpty()) {
+            return;
+        } // TODO
+
         menusDontEat.stream()
                 .filter(menu -> !Menu.isExistMenuName(menu))
                 .findAny()
@@ -41,5 +45,13 @@ public class Coach {
         if (menusDontEat.size() > 3) {
             throw new IllegalArgumentException("못 먹는 메뉴는 0~2개 입력해야 합니다.");
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isSameName(String coachName) {
+        return name.equals(coachName);
     }
 }

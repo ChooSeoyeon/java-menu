@@ -44,7 +44,7 @@ public class InputView {
             return Arrays.stream(inputMenus.split(","))
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException("메뉴는 쉼표(,)로 구분해 입력햐여 합니다.");
+            throw new IllegalArgumentException("메뉴는 쉼표(,)로 구분해 입력해야 합니다.");
         }
     }
 }
