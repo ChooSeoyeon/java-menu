@@ -2,6 +2,8 @@ package menu.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import menu.model.dto.RecommendCategorySummary;
 import menu.model.enums.Category;
 import menu.model.generator.CategoryNumberGenerator;
 import menu.model.generator.MenuShuffleGenerator;
@@ -38,5 +40,11 @@ public class Recommend {
     public String recommendMenuByCategory(Category category) {
         List<String> menuNames = category.getMenuNames();
         return menuShuffleGenerator.generate(menuNames).get(0);
+    }
+
+    public List<RecommendCategorySummary> captureRecommendCategorySummaries() {
+        return recommendedCategories.stream()
+                .map(RecommendCategorySummary::new)
+                .collect(Collectors.toList());
     }
 }

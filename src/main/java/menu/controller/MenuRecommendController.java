@@ -14,11 +14,13 @@ import menu.view.OutputView;
 public class MenuRecommendController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final Recommend recommend;
     private Coaches coaches;
 
     public MenuRecommendController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
     }
 
     public void run() {
@@ -36,7 +38,6 @@ public class MenuRecommendController {
     }
 
     private void start() {
-        Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
         for (Day day : Day.values()) {
             Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
             repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
@@ -44,7 +45,8 @@ public class MenuRecommendController {
     }
 
     public void end() {
-        outputView.printRecommendSummary(coaches.collectRecommendSummaries());
+        outputView.printRecommendSummary(coaches.collectRecommendSummaries(),
+                recommend.captureRecommendCategorySummaries());
     }
 
     private void updateCoachMenuDontEat(String coachName) {
