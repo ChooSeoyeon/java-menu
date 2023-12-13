@@ -60,9 +60,13 @@ public class Coach {
     }
 
     public void recommendMenu(Recommend recommend, Category category) {
-        String recommendedMenu = recommend.recommendMenuByCategory(category);
-        validateRecommendedMenu(recommendedMenu);
-        recommendedMenus.add(recommendedMenu);
+        try {
+            String recommendedMenu = recommend.recommendMenuByCategory(category);
+            validateRecommendedMenu(recommendedMenu);
+            recommendedMenus.add(recommendedMenu);
+        } catch (IllegalStateException e) {
+            recommendMenu(recommend, category);
+        }
     }
 
     private void validateRecommendedMenu(String recommendedMenu) {

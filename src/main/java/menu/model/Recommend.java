@@ -9,7 +9,7 @@ import menu.model.generator.MenuShuffleGenerator;
 public class Recommend {
     private final CategoryNumberGenerator categoryNumberGenerator;
     private final MenuShuffleGenerator menuShuffleGenerator;
-    private List<Category> recommendedCategories;
+    private final List<Category> recommendedCategories;
 
     public Recommend(CategoryNumberGenerator categoryNumberGenerator, MenuShuffleGenerator menuShuffleGenerator) {
         this.categoryNumberGenerator = categoryNumberGenerator;
