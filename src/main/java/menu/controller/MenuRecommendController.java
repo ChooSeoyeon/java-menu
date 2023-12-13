@@ -35,6 +35,7 @@ public class MenuRecommendController {
     private void start() {
         Recommend recommend = new Recommend(new CategoryRandomNumberGenerator(), new MenuShuffleGenerator());
         Category recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
+        repeatUntilSuccess(() -> coaches.recommendMenu(recommend, recommendedCategory));
     }
 
     private void updateCoachMenuDontEat(String coachName) {

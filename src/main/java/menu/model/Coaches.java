@@ -2,6 +2,7 @@ package menu.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import menu.model.enums.Category;
 
 public class Coaches {
     private final List<Coach> coaches;
@@ -35,5 +36,9 @@ public class Coaches {
                 .filter(coach -> coach.isSameName(coachName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 코치입니다."));
+    }
+
+    public void recommendMenu(Recommend recommend, Category category) {
+        coaches.forEach(coach -> coach.recommendMenu(recommend, category));
     }
 }

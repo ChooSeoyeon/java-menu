@@ -6,6 +6,7 @@ import menu.model.enums.Category;
 public class Coach {
     private final String name;
     private List<String> menusDontEat;
+    private List<String> recommendedMenus;
 
     public Coach(final String name) {
         this.name = name;
@@ -53,5 +54,28 @@ public class Coach {
 
     public boolean isSameName(String coachName) {
         return name.equals(coachName);
+    }
+
+    public void recommendMenu(Recommend recommend, Category category) {
+        String recommendedMenu = recommend.recommendMenuByCategory(category);
+        validateRecommendedMenu(recommendedMenu);
+        recommendedMenus.add(recommendedMenu);
+    }
+
+    private void validateRecommendedMenu(String recommendedMenu) {
+        validateRecommendedMenuDontEat(recommendedMenu);
+        validateRecommendedMenuDuplicate(recommendedMenu);
+    }
+
+    private void validateRecommendedMenuDontEat(String recommendedMenu) {
+        if (menusDontEat.contains(recommendedMenu)) {
+            throw new IllegalStateException("못 먹는 메뉴는 추천할 수 없습니다.");
+        }
+    }
+
+    private void validateRecommendedMenuDuplicate(String recommendedMenu) {
+        if (recommendedMenus.contains(recommendedMenu)) {
+            throw new IllegalStateException("이미 추천된 메뉴입니다.");
+        }
     }
 }
