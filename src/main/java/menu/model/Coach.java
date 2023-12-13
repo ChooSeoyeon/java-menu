@@ -7,8 +7,8 @@ import menu.model.enums.Category;
 
 public class Coach {
     private final String name;
+    private final List<String> recommendedMenus;
     private List<String> menusDontEat;
-    private List<String> recommendedMenus;
 
     public Coach(final String name) {
         this.name = name;
