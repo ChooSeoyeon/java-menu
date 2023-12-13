@@ -3,6 +3,9 @@ package menu.controller;
 import java.util.List;
 import java.util.function.Supplier;
 import menu.model.Coaches;
+import menu.model.Recommend;
+import menu.model.enums.Menu;
+import menu.model.generator.CategoryRandomNumberGenerator;
 import menu.view.InputView;
 import menu.view.OutputView;
 
@@ -17,10 +20,20 @@ public class MenuRecommendController {
     }
 
     public void run() {
+        prepare();
+        start();
+    }
+
+    private void prepare() {
         coaches = repeatUntilSuccessWithReturn(this::prepareCoach);
         for (String coachName : coaches.getCoachNames()) {
             repeatUntilSuccess(() -> updateCoachMenuDontEat(coachName));
         }
+    }
+
+    private void start() {
+        Recommend recommend = new Recommend(new CategoryRandomNumberGenerator());
+        Menu recommendedCategory = repeatUntilSuccessWithReturn(recommend::recommendCategory);
     }
 
     private void updateCoachMenuDontEat(String coachName) {
